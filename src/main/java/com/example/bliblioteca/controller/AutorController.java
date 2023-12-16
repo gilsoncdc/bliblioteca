@@ -4,6 +4,7 @@
  */
 package com.example.bliblioteca.controller;
 
+import com.example.bliblioteca.exception.ResourceNotFoundException;
 import com.example.bliblioteca.model.Autor;
 import com.example.bliblioteca.repository.AutorRepository;
 import com.fasterxml.jackson.databind.node.ObjectNode;
