@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+    db:
+        container_name: esi_postgres
+        image: postgres:latest
+        environment:
+            POSTGRES_DB: siap_bd
+            POSTGRES_USER: siap_user
+            POSTGRES_PASSWORD: justina
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+            - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+        ports:
+            - "5439:5432"
+        restart: always
+        networks:
+            - esi_rede
+            
+    pgadmin:
+        container_name: esi_pgadmin
+        image: dpage/pgadmin4
+        environment:
+           PGADMIN_DEFAULT_EMAIL: admin@admin.com
+           PGADMIN_DEFAULT_PASSWORD: justina
+        ports:
+            - "8171:80"
+        depends_on:
+            - db
+        restart: on-failure
+        networks:
+            - esi_rede
+            
+volumes:
+    postgres_data:
+        
+networks:
+    esi_rede:
+        driver: bridge
+       

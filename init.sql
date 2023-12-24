@@ -1,0 +1,4 @@
+CREATE TABLE autor(
+   id_autor SERIAL PRIMARY KEY,
+   nome VARCHAR(250) NOT NULL
+);
